@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "PracticasTanda2"
+include ':app'
+include ':practica9'
+include ':practica10'
+include ':practica13'
+include ':practica11'
+include ':practica14'
+include ':practica12'

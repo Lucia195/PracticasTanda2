@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PracticasTanda2</string>
+    <string name="textoTextView" />
+    <string name="buttonGuardar" />
+    <string-array name="opcionesAlmacenamiento">
+        <item>Interno</item>
+        <item>Externo</item>
+    </string-array>
+</resources>
