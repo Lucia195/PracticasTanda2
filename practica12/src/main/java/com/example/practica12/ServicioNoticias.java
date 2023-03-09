@@ -16,7 +16,7 @@ import java.util.TimerTask;
 
 public class ServicioNoticias extends Service {
     private final LinkedList<String> noticias = new LinkedList<>();
-    private final Timer timer = new Timer();
+    private final Timer timer = new Timer();//Se usa para tareas que el programa tiene que realizar repetitivamente
     private final TimerTask tarea = new TimerTask() {
         @Override
         public void run() {
@@ -40,9 +40,11 @@ public class ServicioNoticias extends Service {
     public IBinder onBind(Intent intent) {
         return binder;
     }
+
     public List<String> getNoticias() {
         return noticias;
     }
+
     public class NoticiasBinder extends Binder {
         public ServicioNoticias getService() {
             return ServicioNoticias.this;

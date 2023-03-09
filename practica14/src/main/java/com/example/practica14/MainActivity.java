@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             AlumnosProvider.COL_APELLIDOS,
             AlumnosProvider.COL_CURSO
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,21 +39,28 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         resolver = getContentResolver();
     }
+
     private void consultarTodosClick(View view) {
         actualizarConsulta(resolver.query(AlumnosProvider.TABLA_ALUMNOS_URI, cols, null, null, null));
     }
+
     private void consultarUnoClick(View view) {
         pedirProcesarId(this::consultar);
     }
+
     private void insertarClick(View view) {
     }
+
     private void eliminarClick(View view) {
         pedirProcesarId(this::eliminar);
     }
+
     private void consultar(long id) {
         Uri uri = ContentUris.withAppendedId(AlumnosProvider.TABLA_ALUMNOS_URI, id);
         actualizarConsulta(resolver.query(uri, cols, null, null, null));
     }
+
+
     private void eliminar(long id) {
         Uri uri = ContentUris.withAppendedId(AlumnosProvider.TABLA_ALUMNOS_URI, id);
         int n = resolver.delete(uri, null, null);
@@ -63,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         } else
             runOnUiThread(() -> textView.setText("NINGÚN ALUMNO ELIMINADO"));
     }
+
     private void actualizarConsulta(Cursor cursor) {
         StringBuilder resultado = new StringBuilder("RESULTADO DE LA CONSULTA\n\n");
         if (cursor.moveToFirst()) {
@@ -80,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         } else
             runOnUiThread(() -> textView.setText("LA CONSULTA NO RETORNA DATOS"));
     }
+
     private void pedirProcesarId(Consumer<Long> accion) {
         final View layout = getLayoutInflater().inflate(R.layout.alert_dialog_id_layout, null);
         new AlertDialog.Builder(this).

@@ -10,11 +10,11 @@ import android.os.Build;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//Los ContentProvider sirven para almacenar los datos
 public class AlumnosContentProvider extends ContentProvider {
     private static int id = 1;
     private final Map<Integer, Alumno> alumnos = new HashMap<>();
-    public static final String AUTHORITY = "fp.dam.pmdm.guiadaxiv.provider";
+    public static final String AUTHORITY = "com.example.practica14.provider";
     public static final Uri TABLA_ALUMNOS_URI = Uri.parse("content://" + AUTHORITY + "/alumnos");
     public static final String COL_NOMBRE = "nombre";
     public static final String COL_APELLIDOS = "apellidos";
@@ -38,6 +38,7 @@ public class AlumnosContentProvider extends ContentProvider {
         return true;
     }
     @Override
+    //Método para hacer la consulta
     public MatrixCursor query(Uri uri, String[] projection, String selection,
                               String[] selectionArgs, String sortOrder) {
         MatrixCursor cursor = new MatrixCursor(projection);
